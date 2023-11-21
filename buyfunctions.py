@@ -1,11 +1,10 @@
 from binance.client import Client
-from sellfunctions import validar_preco 
+from sellfunctions import validar_preco
 
-def comprar(api_key, api_secret, symbol, quantidade, preco):
-    candlesticks = obter_candlesticks(api_key, api_secret, symbol, '1m')
+def comprar(client, symbol, quantidade, preco):
+    candlesticks = obter_candlesticks(client, symbol, '1m')
     if validar_preco(candlesticks):
         print("Condição de compra atendida. Realizando compra.")
-        client = Client(api_key, api_secret)
         order = client.create_order(
             symbol=symbol,
             side='BUY',
@@ -19,7 +18,6 @@ def comprar(api_key, api_secret, symbol, quantidade, preco):
         print("Condição de compra não atendida. Não realizando compra.")
         return "Condição de compra não atendida."
 
-def obter_candlesticks(api_key, api_secret, symbol, intervalo, limite=5):
-    client = Client(api_key, api_secret)
+def obter_candlesticks(client, symbol, intervalo, limite=5):
     candlesticks = client.get_klines(symbol=symbol, interval=intervalo, limit=limite)
     return candlesticks
