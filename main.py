@@ -3,8 +3,8 @@ from binance.spot import Spot
 from functions import comprar, vender, obter_preco_atual_btcusdt, obter_candlesticks
 from analises import validarpreco
 
-api_key = 'bGGhPSsx9ZzgnnS2ZYclBsVjW1l7raAmnoN7VDZ3XWhOK2qC2Ttr7djpoyJVxmEm'
-api_secret = 'qAK1ZuQ2gS4XMao6psqG0NsPmsjinyFnW9M8NtmjYDtVBwoCHb2fDu6gWkTUBB5p'
+api_key = '-'
+api_secret = '-'
 
 client = Client(api_key, api_secret)
 spot_client = Spot(client)
